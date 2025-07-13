@@ -1,0 +1,58 @@
+.genre-block {
+  margin-bottom: 2rem;
+  padding: 0 2rem;
+  position: relative;
+}
+
+.genre-title {
+  color: white;
+  margin-bottom: 0.5rem;
+  font-size: 3rem;
+  font-weight: bold;
+  font-family: monospace;
+}
+
+/* Container for arrows and row */
+.scroll-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Row with horizontal scroll */
+.movie-row {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+
+.movie-row::-webkit-scrollbar {
+  display: none;
+}
+
+/* Arrow buttons */
+.scroll-arrow {
+  background-color: rgba(255, 255, 255, 0.6);
+  color: white;
+  border-radius: 999999px;
+  /* width: 120px; */
+  cursor: pointer;
+  width: 50px;
+  z-index: 2;
+  transition: background 0.3s;
+}
+
+.scroll-arrow:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.scroll-arrow.left {
+  margin-right: 0.5rem;
+}
+
+.scroll-arrow.right {
+  margin-left: 0.5rem;
+}

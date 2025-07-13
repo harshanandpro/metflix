@@ -1,0 +1,51 @@
+.movie-card {
+  position: relative;
+  flex: 0 0 auto;
+  width: 160px;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.movie-card:hover {
+  transform: scale(1.08);
+}
+
+.movie-img {
+  width: 100%;
+  display: block;
+  border-radius: 8px;
+}
+
+/* Overlay with gradient & hidden by default */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  align-items: flex-end;
+  padding: 0.5rem;
+  border-radius: 8px;
+  font-family:'Courier New', Courier, monospace;
+}
+
+/* Show overlay on hover */
+.movie-card:hover .overlay {
+  opacity: 1;
+}
+
+/* Movie title in overlay */
+.movie-title {
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  text-shadow: 0 0 5px rgba(0,0,0,0.7);
+}
