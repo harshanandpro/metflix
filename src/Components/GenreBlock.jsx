@@ -1,29 +1,28 @@
 import { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
-import { API_KEY } from './tmdb';
-import MovieCard from './MovieCard';
+import { API_KEY } from '../tmdb';
+import MovieCard from './MovieCard.jsx';
 import './GenreBlock.css';
-import left from './left.svg'
-import right from './right.svg'
+import left from '../assets/left.svg'
+import right from '../assets/right.svg'
 
-export default function GenreBlock({ genre }) {
+export default function GenreBlock({ genre}) {
   const [movies, setMovies] = useState([]);
   const rowRef = useRef(null);
 
   useEffect(() => {
-    async function fetchMoviesByGenre() {
-      try {
-        const res = await axios.get(
-          `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=${genre.id}&sort_by=popularity.desc`
-        );
-        setMovies(res.data.results);
-      } catch (err) {
-        console.error(`Error fetching movies for genre ${genre.name}:`, err);
-      }
+  async function fetchMoviesByGenre() {
+    try {
+      const res = await axios.get(
+        `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=${genre.id}&sort_by=popularity.desc`
+      );
+      setMovies(res.data.results);
+    } catch (err) {
+      console.error(`Error fetching movies for genre ${genre.name}:`, err);
     }
-    fetchMoviesByGenre();
-  }, [genre]);
-
+  }
+  fetchMoviesByGenre();
+}, [genre]);
   const scrollRow = (direction) => {
     if (rowRef.current) {
       const scrollAmount = 300; // adjust as you like
