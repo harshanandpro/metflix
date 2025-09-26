@@ -1,0 +1,123 @@
+/* MovieList.css */
+.movie-list-container {
+  min-height: 100vh;
+  background: linear-gradient(
+    135deg,
+    #0a0a0a 0%,
+    #1a1a2e 25%,
+    #16213e 50%,
+    #0f0f23 75%,
+    #000 100%
+  );
+  padding: 2rem 0;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.movie-list-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(138, 43, 226, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(255, 20, 147, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 40% 60%, rgba(0, 150, 255, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+  animation: gradientFlow 20s ease-in-out infinite;
+}
+
+/* Enhanced Header */
+.movie-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4rem 3rem;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.header-content .main-title {
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-weight: 900;
+  background: linear-gradient(135deg, #fff 0%, #e0e0e0 50%, #c0c0c0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -2px;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+}
+
+.main-subtitle {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin: 0;
+}
+
+.header-decoration {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.decoration-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff006e, #8338ec);
+  animation: pulse 2s infinite;
+}
+
+.decoration-dot:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.decoration-dot:nth-child(3) {
+  animation-delay: 1s;
+}
+
+/* Genres Container */
+.genres-container {
+  position: relative;
+  z-index: 2;
+  transition: all 0.6s ease;
+}
+
+.genres-container.loading {
+  opacity: 0.7;
+  filter: blur(1px);
+}
+
+/* Animations */
+@keyframes gradientFlow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.8; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .movie-list-header {
+    padding: 0 2rem 2rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .main-title {
+    font-size: 2.5rem !important;
+  }
+  
+  .main-subtitle {
+    font-size: 1rem;
+  }
+}
