@@ -240,7 +240,7 @@ const Navbar = () => {
               Movies
             </Link>
             <Link 
-              to="/tv" 
+              to="/series" 
               className={`nav-link ${isActive('/tv') ? 'active' : ''}`}
             >
               TV Shows
