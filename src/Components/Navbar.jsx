@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import './Navbar.css';
 import logo from '../assets/metflix.png';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,6 +17,8 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const isActive = (path) => location.pathname === path;
+
   return (
     <div className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}>
       <div className="navbar-left">
@@ -23,18 +27,36 @@ const Navbar = () => {
           <div className="logo-glow"></div>
         </div>
         <h1 className="navbar_title">
-          {/* <span className="title-main">Met</span> */}
           <span className="title-accent">Metflix</span>
         </h1>
       </div>
       
       <div className="navbar-center">
         <nav className="nav-links">
-          <a href="#home" className="nav-link active">Home</a>
-          <a href="#movies" className="nav-link">Movies</a>
-          <a href="#series" className="nav-link">TV Shows</a>
-          <a href="#genres" className="nav-link">Genres</a>
-          {/* <a href="#favorites" className="nav-link">My List</a> */}
+          <Link 
+            to="/" 
+            className={`nav-link ${isActive('/') ? 'active' : ''}`}
+          >
+            Home
+          </Link>
+          <Link 
+            to="/movies" 
+            className={`nav-link ${isActive('/movies') ? 'active' : ''}`}
+          >
+            Movies
+          </Link>
+          <Link 
+            to="/series" 
+            className={`nav-link ${isActive('/series') ? 'active' : ''}`}
+          >
+            TV Shows
+          </Link>
+          <Link 
+            to="/genres" 
+            className={`nav-link ${isActive('/genres') ? 'active' : ''}`}
+          >
+            Genres
+          </Link>
         </nav>
       </div>
       
@@ -47,16 +69,8 @@ const Navbar = () => {
           />
           <div className="search-icon">🔍</div>
         </div>
-        
-        {/* <div className="user-menu">
-          <div className="user-avatar">
-            <span>U</span>
-          </div>
-          <div className="dropdown-arrow">▼</div>
-        </div> */}
       </div>
       
-      {/* Background blur effect */}
       <div className="navbar-backdrop"></div>
     </div>
   );
