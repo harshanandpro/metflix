@@ -3,6 +3,8 @@ import axios from 'axios';
 import { API_KEY } from '../tmdb';
 import MovieCard from './MovieCard.jsx';
 import './GenreBlock.css';
+import { useNavigate } from 'react-router-dom';
+
 
 export default function GenreBlock({ genre, index, isVisible }) {
   const [movies, setMovies] = useState([]);
@@ -10,6 +12,8 @@ export default function GenreBlock({ genre, index, isVisible }) {
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
   const rowRef = useRef(null);
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     async function fetchMoviesByGenre() {
@@ -80,7 +84,9 @@ export default function GenreBlock({ genre, index, isVisible }) {
           </div>
         </div>
         <div className="genre-actions">
-          <button className="view-all-btn">
+          <button className="view-all-btn" 
+            onClick={() => navigate(`/genre?genre=${genre.id}&name=${encodeURIComponent(genre.name)}&type=movie`)}
+>
             View All
             <span className="arrow-right">→</span>
           </button>

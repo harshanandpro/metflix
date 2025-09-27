@@ -6,6 +6,9 @@ import Movies from './Pages/Movies';
 import TVShows from './Pages/Tv';
 // import Genres from './Pages/Genres';
 import './App.css';
+import GenreMovies from './Pages/GenreMovies';
+import SearchResults from './Pages/SearchResults';
+
 
 const router = createBrowserRouter([
   {
@@ -24,10 +27,15 @@ const router = createBrowserRouter([
         path: '/series',
         element: <TVShows />,
       },
-      // {
-      //   path: '/genres',
-      //   element: <Genres />,
-      // },
+      {
+        path: '/genre',
+        element: <GenreMovies />,
+      },
+      {
+  path: '/search',
+  element: <SearchResults />,
+},
+
     ],
   },
 ]);
